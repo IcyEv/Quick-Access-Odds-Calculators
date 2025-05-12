@@ -14,6 +14,8 @@
 from breezypythongui import EasyFrame
 from calculators import convert_odds
 import tkinter.messagebox
+import tkinter
+import os
 
 class OddsCalculators(EasyFrame):
     """Displays GUI converting sports betting odds."""
@@ -27,18 +29,31 @@ class OddsCalculators(EasyFrame):
         self.addLabel(text="Quick Access Odds Calculators",row=0, column=0, columnspan=2)
 
 
+        # add calculator picture
+        self.addLabel(text= "Calculator Icon", row=1, column=0)
+        self.image = self.addLabel(text="", row=1, column=1)
+        self.image["image"] = self.loadImage("calculator.png")
 
-        # Add label and input field and dropdown for odds
+
+        # add sports logo picture
+        self.addLabel(text= "Sports Icon", row=1, column=0)
+        self.image1 = self.addLabel(text="", row=4, column=1)
+        self.image1["image"] = self.loadImage("sports.png")                
+
+
+
+        # Add label and input field and dropdown for odds        
+        # # AI ASSISTANCE: used CHat GPT to help me with dropdown box
         self.addLabel(text="Enter odds (example, +200):", row=2, column=0)
         self.oddsField = self.addTextField(text="", row=2,column=1)
-        self.formatChoice = self.addCombobox(row=3, column=0, columnspan=2,
+        self.formatChoice = self.addComboBox (row=3, column=0, columnspan=2,
                                              values=["American", "Decimal"],
                                              default="American")
 
 
 
         # add result label
-        self.resultLabel = self.addLabel(text= "Results Here", row=5, column=0, coulumnspan=2)
+        self.resultLabel = self.addLabel(text= "Results Here", row=5, column=0, columnspan=2)
 
         # add the buttons
         self.addButton(text="Convert", row=6, column=0, command=self.convert_odds)
@@ -91,3 +106,5 @@ class OddsCalculators(EasyFrame):
 # Start the program !!!!
 if __name__ == "__main__":
      OddsCalculators().mainloop()
+
+   
